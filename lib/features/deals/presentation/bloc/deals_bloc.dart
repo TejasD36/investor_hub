@@ -1,7 +1,9 @@
 import '../../../../core.dart';
+import '../../domain/entities/deal_filter.dart';
 import '../../domain/usecases/fetch_deals_usecase.dart';
 import '../../domain/usecases/filter_deals_usecase.dart';
 import '../../domain/usecases/search_deals_usecase.dart';
+import '../models/enum_extension.dart';
 import 'deals_event.dart';
 import 'deals_state.dart';
 
@@ -9,6 +11,9 @@ class DealsBloc extends Bloc<DealsEvent, DealsState> {
   final FetchDealsUseCase fetchDealsUseCase;
   final SearchDealsUseCase searchDealsUseCase;
   final FilterDealsUseCase filterDealsUseCase;
+  DealFilter _currentFilter = const DealFilter();
+
+  DealFilter get currentFilter => _currentFilter;
 
   DealsBloc({required this.fetchDealsUseCase, required this.searchDealsUseCase, required this.filterDealsUseCase})
     : super(const DealsState.initial()) {
@@ -80,6 +85,34 @@ class DealsBloc extends Bloc<DealsEvent, DealsState> {
           } catch (e) {
             emit(DealsState.error(e.toString()));
           }
+        },
+        applyFilter: (filter) async {
+          emit(const DealsState.loading());
+
+          _currentFilter = filter;
+
+          try {
+            final deals = await filterDealsUseCase(
+              minRoi: filter.minRoi,
+              maxRoi: filter.maxRoi,
+              riskLevel: filter.risk?.label,
+              industry: filter.industry?.label,
+              status: filter.status?.label,
+            );
+
+            emit(deals.isEmpty ? const DealsState.empty() : DealsState.loaded(deals: deals));
+          } catch (e) {
+            emit(DealsState.error(e.toString()));
+          }
+        },
+        clearFilter: () async {
+          emit(const DealsState.loading());
+
+          _currentFilter = const DealFilter();
+
+          final deals = await fetchDealsUseCase();
+
+          emit(deals.isEmpty ? const DealsState.empty() : DealsState.loaded(deals: deals));
         },
       );
     });

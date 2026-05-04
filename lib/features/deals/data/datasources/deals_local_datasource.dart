@@ -52,7 +52,6 @@ class DealsLocalDataSource {
 
   Future<DealModel?> getDealById(String id) async {
     final deals = await fetchDeals();
-
     try {
       return deals.firstWhere((deal) => deal.id == id);
     } catch (_) {

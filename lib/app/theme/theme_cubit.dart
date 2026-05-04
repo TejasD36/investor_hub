@@ -5,7 +5,7 @@ class ThemeCubit extends Cubit<ThemeState> {
     _loadTheme();
   }
 
-  static const _boxName = 'settings_box';
+  static const _boxName = HiveBoxes.settingsBox;
   static const _themeKey = 'theme_mode';
 
   Future<void> _loadTheme() async {

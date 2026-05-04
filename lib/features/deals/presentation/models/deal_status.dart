@@ -1,0 +1,1 @@
+enum DealStatus { open, closed }

@@ -20,9 +20,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   }) : super(const AuthState.initial()) {
     on<AuthEvent>((event, emit) async {
       await event.when(
-        // =============================
-        // CHECK AUTH STATUS
-        // =============================
         checkRequested: () async {
           emit(const AuthState.loading());
 
@@ -45,9 +42,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           }
         },
 
-        // =============================
-        // LOGIN
-        // =============================
         loginRequested: (String email, String password) async {
           emit(const AuthState.loading());
 
@@ -60,9 +54,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           }
         },
 
-        // =============================
-        // LOGOUT
-        // =============================
         logoutRequested: () async {
           emit(const AuthState.loading());
 

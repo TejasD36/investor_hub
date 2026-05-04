@@ -10,11 +10,10 @@ class AuthLocalDataSource {
   /// =============================
   /// MOCK LOGIN
   /// =============================
-  ///
   /// Mock Credentials:
   /// Email: investor@hub.com
   /// Password: 123456
-  ///
+
   Future<UserModel> login({required String email, required String password}) async {
     await Future.delayed(const Duration(seconds: 2));
 

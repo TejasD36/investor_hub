@@ -1,4 +1,5 @@
 import '../../../../core.dart';
+import '../../domain/entities/deal_filter.dart';
 
 part 'deals_event.freezed.dart';
 
@@ -12,4 +13,8 @@ sealed class DealsEvent with _$DealsEvent {
       _FilterDeals;
 
   const factory DealsEvent.resetDeals() = _ResetDeals;
+
+  const factory DealsEvent.applyFilter({required DealFilter filter}) = _ApplyFilter;
+
+  const factory DealsEvent.clearFilter() = _ClearFilter;
 }

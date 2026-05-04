@@ -61,14 +61,16 @@ extension DealsEventPatterns on DealsEvent {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _FetchDeals value)?  fetchDeals,TResult Function( _SearchDeals value)?  searchDeals,TResult Function( _FilterDeals value)?  filterDeals,TResult Function( _ResetDeals value)?  resetDeals,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _FetchDeals value)?  fetchDeals,TResult Function( _SearchDeals value)?  searchDeals,TResult Function( _FilterDeals value)?  filterDeals,TResult Function( _ResetDeals value)?  resetDeals,TResult Function( _ApplyFilter value)?  applyFilter,TResult Function( _ClearFilter value)?  clearFilter,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case _FetchDeals() when fetchDeals != null:
 return fetchDeals(_that);case _SearchDeals() when searchDeals != null:
 return searchDeals(_that);case _FilterDeals() when filterDeals != null:
 return filterDeals(_that);case _ResetDeals() when resetDeals != null:
-return resetDeals(_that);case _:
+return resetDeals(_that);case _ApplyFilter() when applyFilter != null:
+return applyFilter(_that);case _ClearFilter() when clearFilter != null:
+return clearFilter(_that);case _:
   return orElse();
 
 }
@@ -86,14 +88,16 @@ return resetDeals(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _FetchDeals value)  fetchDeals,required TResult Function( _SearchDeals value)  searchDeals,required TResult Function( _FilterDeals value)  filterDeals,required TResult Function( _ResetDeals value)  resetDeals,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _FetchDeals value)  fetchDeals,required TResult Function( _SearchDeals value)  searchDeals,required TResult Function( _FilterDeals value)  filterDeals,required TResult Function( _ResetDeals value)  resetDeals,required TResult Function( _ApplyFilter value)  applyFilter,required TResult Function( _ClearFilter value)  clearFilter,}){
 final _that = this;
 switch (_that) {
 case _FetchDeals():
 return fetchDeals(_that);case _SearchDeals():
 return searchDeals(_that);case _FilterDeals():
 return filterDeals(_that);case _ResetDeals():
-return resetDeals(_that);}
+return resetDeals(_that);case _ApplyFilter():
+return applyFilter(_that);case _ClearFilter():
+return clearFilter(_that);}
 }
 /// A variant of `map` that fallback to returning `null`.
 ///
@@ -107,14 +111,16 @@ return resetDeals(_that);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _FetchDeals value)?  fetchDeals,TResult? Function( _SearchDeals value)?  searchDeals,TResult? Function( _FilterDeals value)?  filterDeals,TResult? Function( _ResetDeals value)?  resetDeals,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _FetchDeals value)?  fetchDeals,TResult? Function( _SearchDeals value)?  searchDeals,TResult? Function( _FilterDeals value)?  filterDeals,TResult? Function( _ResetDeals value)?  resetDeals,TResult? Function( _ApplyFilter value)?  applyFilter,TResult? Function( _ClearFilter value)?  clearFilter,}){
 final _that = this;
 switch (_that) {
 case _FetchDeals() when fetchDeals != null:
 return fetchDeals(_that);case _SearchDeals() when searchDeals != null:
 return searchDeals(_that);case _FilterDeals() when filterDeals != null:
 return filterDeals(_that);case _ResetDeals() when resetDeals != null:
-return resetDeals(_that);case _:
+return resetDeals(_that);case _ApplyFilter() when applyFilter != null:
+return applyFilter(_that);case _ClearFilter() when clearFilter != null:
+return clearFilter(_that);case _:
   return null;
 
 }
@@ -131,13 +137,15 @@ return resetDeals(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  fetchDeals,TResult Function( String query)?  searchDeals,TResult Function( double? minRoi,  double? maxRoi,  String? riskLevel,  String? industry,  String? status)?  filterDeals,TResult Function()?  resetDeals,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  fetchDeals,TResult Function( String query)?  searchDeals,TResult Function( double? minRoi,  double? maxRoi,  String? riskLevel,  String? industry,  String? status)?  filterDeals,TResult Function()?  resetDeals,TResult Function( DealFilter filter)?  applyFilter,TResult Function()?  clearFilter,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _FetchDeals() when fetchDeals != null:
 return fetchDeals();case _SearchDeals() when searchDeals != null:
 return searchDeals(_that.query);case _FilterDeals() when filterDeals != null:
 return filterDeals(_that.minRoi,_that.maxRoi,_that.riskLevel,_that.industry,_that.status);case _ResetDeals() when resetDeals != null:
-return resetDeals();case _:
+return resetDeals();case _ApplyFilter() when applyFilter != null:
+return applyFilter(_that.filter);case _ClearFilter() when clearFilter != null:
+return clearFilter();case _:
   return orElse();
 
 }
@@ -155,13 +163,15 @@ return resetDeals();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  fetchDeals,required TResult Function( String query)  searchDeals,required TResult Function( double? minRoi,  double? maxRoi,  String? riskLevel,  String? industry,  String? status)  filterDeals,required TResult Function()  resetDeals,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  fetchDeals,required TResult Function( String query)  searchDeals,required TResult Function( double? minRoi,  double? maxRoi,  String? riskLevel,  String? industry,  String? status)  filterDeals,required TResult Function()  resetDeals,required TResult Function( DealFilter filter)  applyFilter,required TResult Function()  clearFilter,}) {final _that = this;
 switch (_that) {
 case _FetchDeals():
 return fetchDeals();case _SearchDeals():
 return searchDeals(_that.query);case _FilterDeals():
 return filterDeals(_that.minRoi,_that.maxRoi,_that.riskLevel,_that.industry,_that.status);case _ResetDeals():
-return resetDeals();}
+return resetDeals();case _ApplyFilter():
+return applyFilter(_that.filter);case _ClearFilter():
+return clearFilter();}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -175,13 +185,15 @@ return resetDeals();}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  fetchDeals,TResult? Function( String query)?  searchDeals,TResult? Function( double? minRoi,  double? maxRoi,  String? riskLevel,  String? industry,  String? status)?  filterDeals,TResult? Function()?  resetDeals,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  fetchDeals,TResult? Function( String query)?  searchDeals,TResult? Function( double? minRoi,  double? maxRoi,  String? riskLevel,  String? industry,  String? status)?  filterDeals,TResult? Function()?  resetDeals,TResult? Function( DealFilter filter)?  applyFilter,TResult? Function()?  clearFilter,}) {final _that = this;
 switch (_that) {
 case _FetchDeals() when fetchDeals != null:
 return fetchDeals();case _SearchDeals() when searchDeals != null:
 return searchDeals(_that.query);case _FilterDeals() when filterDeals != null:
 return filterDeals(_that.minRoi,_that.maxRoi,_that.riskLevel,_that.industry,_that.status);case _ResetDeals() when resetDeals != null:
-return resetDeals();case _:
+return resetDeals();case _ApplyFilter() when applyFilter != null:
+return applyFilter(_that.filter);case _ClearFilter() when clearFilter != null:
+return clearFilter();case _:
   return null;
 
 }
@@ -409,6 +421,125 @@ int get hashCode => runtimeType.hashCode;
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
   return 'DealsEvent.resetDeals()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class _ApplyFilter with DiagnosticableTreeMixin implements DealsEvent {
+  const _ApplyFilter({required this.filter});
+  
+
+ final  DealFilter filter;
+
+/// Create a copy of DealsEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$ApplyFilterCopyWith<_ApplyFilter> get copyWith => __$ApplyFilterCopyWithImpl<_ApplyFilter>(this, _$identity);
+
+
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'DealsEvent.applyFilter'))
+    ..add(DiagnosticsProperty('filter', filter));
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ApplyFilter&&(identical(other.filter, filter) || other.filter == filter));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,filter);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'DealsEvent.applyFilter(filter: $filter)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$ApplyFilterCopyWith<$Res> implements $DealsEventCopyWith<$Res> {
+  factory _$ApplyFilterCopyWith(_ApplyFilter value, $Res Function(_ApplyFilter) _then) = __$ApplyFilterCopyWithImpl;
+@useResult
+$Res call({
+ DealFilter filter
+});
+
+
+$DealFilterCopyWith<$Res> get filter;
+
+}
+/// @nodoc
+class __$ApplyFilterCopyWithImpl<$Res>
+    implements _$ApplyFilterCopyWith<$Res> {
+  __$ApplyFilterCopyWithImpl(this._self, this._then);
+
+  final _ApplyFilter _self;
+  final $Res Function(_ApplyFilter) _then;
+
+/// Create a copy of DealsEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? filter = null,}) {
+  return _then(_ApplyFilter(
+filter: null == filter ? _self.filter : filter // ignore: cast_nullable_to_non_nullable
+as DealFilter,
+  ));
+}
+
+/// Create a copy of DealsEvent
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$DealFilterCopyWith<$Res> get filter {
+  
+  return $DealFilterCopyWith<$Res>(_self.filter, (value) {
+    return _then(_self.copyWith(filter: value));
+  });
+}
+}
+
+/// @nodoc
+
+
+class _ClearFilter with DiagnosticableTreeMixin implements DealsEvent {
+  const _ClearFilter();
+  
+
+
+
+
+
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'DealsEvent.clearFilter'))
+    ;
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ClearFilter);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'DealsEvent.clearFilter()';
 }
 
 

@@ -7,12 +7,10 @@ class HiveService {
   static Future<void> init() async {
     await Hive.initFlutter();
 
-    // Register adapters
     Hive.registerAdapter(DealModelAdapter());
     Hive.registerAdapter(UserModelAdapter());
     Hive.registerAdapter(SessionModelAdapter());
 
-    // Open boxes
     await Future.wait([
       Hive.openBox<DealModel>(HiveBoxes.dealsBox),
       Hive.openBox<DealModel>(HiveBoxes.interestsBox),
