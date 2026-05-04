@@ -108,31 +108,34 @@ class _FiltersBottomSheetState extends State<FiltersBottomSheet> {
 
             const SizedBox(height: 30),
 
-            Row(
-              children: [
-                Expanded(
-                  child: OutlinedButton(
-                    onPressed: () {
-                      context.read<DealsBloc>().add(const DealsEvent.clearFilter());
-                      Navigator.pop(context);
-                    },
-                    child: const Text('Reset'),
+            SizedBox(
+              height: 40,
+              child: Row(
+                children: [
+                  Expanded(
+                    child: OutlinedButton(
+                      onPressed: () {
+                        context.read<DealsBloc>().add(const DealsEvent.clearFilter());
+                        Navigator.pop(context);
+                      },
+                      child: const Text('Reset'),
+                    ),
                   ),
-                ),
 
-                const SizedBox(width: 14),
+                  const SizedBox(width: 14),
 
-                Expanded(
-                  child: ElevatedButton(
-                    onPressed: () {
-                      context.read<DealsBloc>().add(DealsEvent.applyFilter(filter: _tempFilter));
+                  Expanded(
+                    child: ElevatedButton(
+                      onPressed: () {
+                        context.read<DealsBloc>().add(DealsEvent.applyFilter(filter: _tempFilter));
 
-                      Navigator.pop(context);
-                    },
-                    child: const Text('Apply'),
+                        Navigator.pop(context);
+                      },
+                      child: const Text('Apply'),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ],
         ),
