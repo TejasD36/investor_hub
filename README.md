@@ -26,7 +26,7 @@ The project emphasizes:
 
 ---
 
-# Core Features
+# Core Features  
 
 ## Authentication (Mock)
 
@@ -237,16 +237,17 @@ assets/mock/deals.json
 
 ---
 
-# Screenshots ( TO be Added)
+# Screenshots
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/b108827c-4c5a-4e3e-82e4-f148ea358641" width="180" style="margin:10px"/>
+  <img src="https://github.com/user-attachments/assets/fdba282e-6a0b-4afc-b487-30b4caeca231" width="180" style="margin:10px"/>
+  <img src="https://github.com/user-attachments/assets/483768d7-a83e-4055-a9f1-acbd6a07f605" width="180" style="margin:10px"/>
+  <br/>
+  <img src="https://github.com/user-attachments/assets/3ebc49dd-9e59-4fee-9755-9e8e165fed79" width="180" style="margin:10px"/>
+  <img src="https://github.com/user-attachments/assets/51d622de-d5d5-4215-92bb-4403c641c798" width="180" style="margin:10px"/>
+  <img src="https://github.com/user-attachments/assets/d159d681-318c-458f-a0a6-bd59e831bb19" width="180" style="margin:10px"/>
+</div>
 
-* Splash Screen
-* Login Screen
-* Dashboard
-* Filters
-* Deal Details
-* My Interests
-* Drawer
-* Dark Mode
 ---
 
 # Setup Instructions
@@ -254,7 +255,7 @@ assets/mock/deals.json
 ## Clone Repository
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/TejasD36/investor_hub.git
 cd investor_hub
 ```
 
@@ -317,8 +318,7 @@ build/app/outputs/flutter-apk/app-release.apk
 * [x] Clean Architecture
 * [x] Local Persistence
 * [x] Modern UI
-* [ ] Screenshots
-* [ ] APK Upload
+* [x] Screenshots
 
 ---
 
